@@ -34,7 +34,7 @@
         <groovy.version>2.4.6</groovy.version>
         <groovy.sandbox.version>1.6</groovy.sandbox.version>
         <hutool.all.verison>5.0.3</hutool.all.verison>
-        <fastjson.version>1.2.11</fastjson.version>
+        <fastjson.version>1.2.25.sec10</fastjson.version>
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
         <jdk.version>1.8</jdk.version>
