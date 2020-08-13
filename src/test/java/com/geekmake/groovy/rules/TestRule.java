@@ -1,6 +1,6 @@
 package com.geekmake.groovy.rules;
 
-import com.geekmake.groovy.rules.core.GroovyScriptUtil;
+import com.geekmake.groovy.rules.core.GroovyScriptManage;
 import org.junit.Test;
 
 import com.geekmake.groovy.rules.common.Constants;
@@ -40,7 +40,7 @@ public class TestRule {
         context.put(rule.getLeftVar().getIndexKey(), rule.getLeftVar().getIndexKeyValue());
         context.put(Constants.INDEX_THRESHOLD_VALUE, rule.getRightVar());
         Object[] params = {context};
-        Boolean isTrue = (Boolean)GroovyScriptUtil.invokeMethod(rule.getScriptTemplate(), "execute", params);
+        Boolean isTrue = (Boolean) GroovyScriptManage.invokeMethod(rule.getScriptTemplate(), "execute", params);
         Assert.isTrue(isTrue);
     }
 
@@ -52,7 +52,7 @@ public class TestRule {
         context.put(rule.getLeftVar().getIndexKey(), rule.getLeftVar().getIndexKeyValue());
         context.put(Constants.INDEX_THRESHOLD_VALUE, rule.getRightVar());
         Object[] params = {context};
-        Boolean isTrue = (Boolean)GroovyScriptUtil.invokeMethod(rule.getScriptTemplate(), "execute", params);
+        Boolean isTrue = (Boolean) GroovyScriptManage.invokeMethod(rule.getScriptTemplate(), "execute", params);
         Assert.isTrue(isTrue);
     }
 }

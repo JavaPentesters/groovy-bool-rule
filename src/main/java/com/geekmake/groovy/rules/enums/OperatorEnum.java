@@ -7,7 +7,15 @@ import java.util.Map;
 
 /**
  * 操作符枚举类
- *
+ * <ul>
+ *      <li>
+ *          1、数值运算的操作符 ：等于(==/EQUAL), 大于(>/GREATER)， 小于（</LESS）,不等于(!=/NOT_EQUAL),大于等于（>=/GREATER_EQUAL）,小于等于（<=/LESS_EQUAL）；
+ *      </li>
+ *      <li>
+ *          2、字符串运算的操作符： 包含（CONTAINS）、不包含（NOT CONTAINS）、字符串相等（STRING_EQUAL）、字符串不等（NOTSTRING_EQUAL）、不区分大小写的字符串等于（EQUAL_IGNORE_CASE），
+ *          不区分大小写的字符串不等（NOT_EQUAL_IGNORE_CASE）、匹配（MATCHES）、不匹配（NOT_MATCHES）
+ *      </li>
+ *  </ul>
  * @author pez1420@gmail.com
  * @version $Id: OperatorEnum.java v 0.1 2020/7/29 9:15 下午 pez1420 Exp $$
  */
@@ -18,7 +26,13 @@ public enum OperatorEnum {
     GTE(">=","大于等于"),
     LTE("<=","小于等于"),
     UNEQ("!=","不等于"),
-    NOT("!","取反");
+    NOT("!","取反"),
+    CONTAINS("CONTAINS", "包含"),
+    NOT_CONTAINS("NOT_CONTAINS", "不包含"),
+    EQUAL_IGNORE_CASE("EQUAL_IGNORE_CASE", "不区分大小写的字符串等于"),
+    NOT_EQUAL_IGNORE_CASE("NOT_EQUAL_IGNORE_CASE", "不区分大小写的字符串不等"),
+    MATCHES("MATCHES", "正则匹配"),
+    NOT_MATCHES("NOT_MATCHES", "正则匹配");
 
     /** 缓存MAP */
     private static final Map<String, OperatorEnum> OPERATOR_MAP = new HashMap<>();

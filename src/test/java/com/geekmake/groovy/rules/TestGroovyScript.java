@@ -1,6 +1,6 @@
 package com.geekmake.groovy.rules;
 
-import com.geekmake.groovy.rules.core.GroovyScriptUtil;
+import com.geekmake.groovy.rules.core.GroovyScriptManage;
 import groovy.lang.GroovyObject;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,8 +20,8 @@ public class TestGroovyScript {
                 "    }\n" +
                 "}";
         Object[] params = { 1, 2 };
-        GroovyObject groovyObject = GroovyScriptUtil.loadScript(ruleScript);
-        Object result = GroovyScriptUtil.invokeMethod(groovyObject, "add", params);
+        GroovyObject groovyObject = GroovyScriptManage.loadScript(ruleScript);
+        Object result = GroovyScriptManage.invokeMethod(groovyObject, "add", params);
         Assert.assertTrue(result.equals(3));
     }
 }

@@ -21,12 +21,13 @@ public class GroovyShellManage {
 
     private static final Map<String, Class> SCRIPT_CLASS_MAP = new ConcurrentHashMap<>();
 
-    public static <T> T executeExp(String expScript, Map<String, Object> params, Class<T> returnType) {
+    public static <T> T executeExp(String expScript, Map<String, Object> params,
+                                   Class<T> returnType) {
         if (StringUtils.isBlank(expScript)) {
             return null;
         }
 
-        Object result = null;
+        Object result;
         try {
             Class aClass = loadClass(expScript);
             result = InvokerHelper.createScript(aClass, new Binding(params)).run();
