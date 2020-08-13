@@ -7,9 +7,12 @@ package com.geekmake.groovy.rules.common;
 public class Constants {
 
     /** 指标名称 */
-    public static final String INDEX_KEY             = "indexKey";
+    public static final String INDEX_KEY   = "indexKey";
 
     /** 指标阈值 */
-    public static final String INDEX_THRESHOLD_VALUE = "indexThresholdValue";
+    public static final String RIGHT_VALUE = "rightValue";
+
+    /** 操作符*/
+    public static final String OPERATOR    = "operator";
 
 }

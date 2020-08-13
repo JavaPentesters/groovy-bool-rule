@@ -1,6 +1,6 @@
 package com.geekmake.groovy.rules.data;
 
-import static com.geekmake.groovy.rules.utils.ScriptTemplateUtil.generateOperatorScript;
+import static com.geekmake.groovy.rules.utils.ScriptTemplateUtil.generateRuleScript;
 
 import java.util.Random;
 
@@ -21,7 +21,7 @@ public class RuleMockData {
         rule.setLeftVar(FactorMockData.getFactor1());
         rule.setOperatorEnum(OperatorEnum.GTE);
         rule.setRightVar(50);
-        String script = generateOperatorScript(rule.getOperatorEnum());
+        String script = generateRuleScript(rule.getOperatorEnum());
         rule.setScriptTemplate(script);
         System.out.println(script);
         return rule;
@@ -34,7 +34,7 @@ public class RuleMockData {
         rule.setLeftVar(FactorMockData.getFactor2());
         rule.setOperatorEnum(OperatorEnum.EQ);
         rule.setRightVar("北京");
-        String script = generateOperatorScript(rule.getOperatorEnum());
+        String script = generateRuleScript(rule.getOperatorEnum());
         rule.setScriptTemplate(script);
         System.out.println(script);
         return rule;
@@ -47,7 +47,7 @@ public class RuleMockData {
         rule.setLeftVar(FactorMockData.getFactor3());
         rule.setOperatorEnum(OperatorEnum.LT);
         rule.setRightVar(20);
-        String script = generateOperatorScript(rule.getOperatorEnum());
+        String script = generateRuleScript(rule.getOperatorEnum());
         rule.setScriptTemplate(script);
         System.out.println(script);
         return rule;

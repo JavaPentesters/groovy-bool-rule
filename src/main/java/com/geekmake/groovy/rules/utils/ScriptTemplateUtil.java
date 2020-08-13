@@ -26,7 +26,7 @@ public class ScriptTemplateUtil {
      *                 操作符
      * @return String
      */
-    public static String generateOperatorScript(OperatorEnum operator) {
+    public static String generate(OperatorEnum operator) {
         StringBuilder execScript = new StringBuilder();
         execScript.append("package com.geekmake.groovy.rules").append("\n");
         execScript.append("import com.geekmake.groovy.rules.context.*;").append("\n");
@@ -38,6 +38,49 @@ public class ScriptTemplateUtil {
         execScript.append("         return leftVarValue ").append(operator.getType())
             .append(" rightVarValue ").append(" ? true:false;").append("\n");
 
+        execScript.append("    }").append("\n");
+        execScript.append("}").append("\n");
+
+        return execScript.toString();
+    }
+
+    public static String generateRuleScript(OperatorEnum operator) {
+        StringBuilder execScript = new StringBuilder();
+        execScript.append("package com.geekmake.groovy.rules").append("\n");
+        execScript.append("import com.geekmake.groovy.rules.context.*;").append("\n");
+        execScript.append("class  OperatorScript {").append("\n");
+        execScript.append("     boolean execute(def context) {").append("\n");
+        execScript.append("         def indexKeyName = context.indexKey;").append("\n");
+        execScript.append("         def left = context.\"${indexKeyName}\";").append("\n");
+        execScript.append("         def right = context.rightValue;").append("\n");
+        execScript.append("         def op = context.operator;").append("\n");
+        execScript.append("         return check(left, right, op);").append("\n");
+        execScript.append("    }").append("\n");
+        execScript.append("    boolean check(def left, def right, def op){").append("\n");
+        execScript.append("        if (op.category == 2) {").append("\n");
+        execScript.append("            switch (op) {").append("\n");
+        execScript.append("                case [OperatorEnum.STRING_EQUAL]:").append("\n");
+        execScript.append("                    return left == right;").append("\n");
+        execScript.append("                case [OperatorEnum.STRING_NOT_EQUAL]:").append("\n");
+        execScript.append("                    return left != right;").append("\n");
+        execScript.append("                case [OperatorEnum.EQUAL_IGNORE_CASE]:").append("\n");
+        execScript.append("                    return left.equalsIgnoreCase(right);").append("\n");
+        execScript.append("                case [OperatorEnum.NOT_EQUAL_IGNORE_CASE]:").append("\n");
+        execScript.append("                    return !left.equalsIgnoreCase(right);").append("\n");
+        execScript.append("                case [OperatorEnum.MATCHES]:").append("\n");
+        execScript.append("                    return left ==~ right;").append("\n");
+        execScript.append("                case [OperatorEnum.NOT_MATCHES]:").append("\n");
+        execScript.append("                    return !(left ==~ right);").append("\n");
+        execScript.append("                case [OperatorEnum.CONTAINS]:").append("\n");
+        execScript.append("                    return left && left.contains(right);").append("\n");
+        execScript.append("                case [OperatorEnum.NOT_CONTAINS]:").append("\n");
+        execScript.append("                    return left && !left.contains(right);").append("\n");
+        execScript.append("            }").append("\n");
+        execScript.append("        } else if (op.category == 1) {").append("\n");
+        execScript.append("         return left ").append(operator.getType())
+                .append(" right ").append(" ? true:false;").append("\n");
+        execScript.append("        }").append("\n");
+        execScript.append("        return false;").append("\n");
         execScript.append("    }").append("\n");
         execScript.append("}").append("\n");
 

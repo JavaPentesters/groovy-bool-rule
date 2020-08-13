@@ -38,7 +38,7 @@ public class TestRule {
         DefaultContext<String, Object> context = new DefaultContext<>();
         context.put(Constants.INDEX_KEY, rule.getLeftVar().getIndexKey());
         context.put(rule.getLeftVar().getIndexKey(), rule.getLeftVar().getIndexKeyValue());
-        context.put(Constants.INDEX_THRESHOLD_VALUE, rule.getRightVar());
+        context.put(Constants.RIGHT_VALUE, rule.getRightVar());
         Object[] params = {context};
         Boolean isTrue = (Boolean) GroovyScriptManage.invokeMethod(rule.getScriptTemplate(), "execute", params);
         Assert.isTrue(isTrue);
@@ -50,7 +50,7 @@ public class TestRule {
         DefaultContext<String, Object> context = new DefaultContext<>();
         context.put(Constants.INDEX_KEY, rule.getLeftVar().getIndexKey());
         context.put(rule.getLeftVar().getIndexKey(), rule.getLeftVar().getIndexKeyValue());
-        context.put(Constants.INDEX_THRESHOLD_VALUE, rule.getRightVar());
+        context.put(Constants.RIGHT_VALUE, rule.getRightVar());
         Object[] params = {context};
         Boolean isTrue = (Boolean) GroovyScriptManage.invokeMethod(rule.getScriptTemplate(), "execute", params);
         Assert.isTrue(isTrue);

@@ -46,7 +46,8 @@ public class RuleEngine {
             DefaultContext<String, Object> context = new DefaultContext<>();
             context.put(Constants.INDEX_KEY, rule.getLeftVar().getIndexKey());
             context.put(rule.getLeftVar().getIndexKey(), rule.getLeftVar().getIndexKeyValue());
-            context.put(Constants.INDEX_THRESHOLD_VALUE, rule.getRightVar());
+            context.put(Constants.RIGHT_VALUE, rule.getRightVar());
+            context.put(Constants.OPERATOR, rule.getOperatorEnum());
             Boolean ruleResult = (Boolean) GroovyScriptManage.invokeMethod(rule.getScriptTemplate(),
                 "execute", new Object[] { context });
             expMap.put(PREFIX + rule.getRuleId(), ruleResult);
