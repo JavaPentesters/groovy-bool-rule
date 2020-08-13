@@ -13,7 +13,6 @@ import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyObject;
 
 /**
- * https://www.cnblogs.com/xrq730/p/6662232.html
  *
  * @author pez1420@gmail.com
  * @version $Id: GroovyScriptManage.java v 0.1 2020/8/11 2:59 下午 pez1420 Exp $$
