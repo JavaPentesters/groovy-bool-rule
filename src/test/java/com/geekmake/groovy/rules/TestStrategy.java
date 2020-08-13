@@ -18,7 +18,7 @@ public class TestStrategy {
     public void testStrategy() {
         Strategy strategy = StrategyMockData.getStrategy1MockData();
         Boolean executeResult = false;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
              executeResult = RuleEngine.getInstance().run(strategy);
         }
         Assert.isTrue(executeResult);

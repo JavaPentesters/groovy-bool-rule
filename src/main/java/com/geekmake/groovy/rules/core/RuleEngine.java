@@ -52,11 +52,12 @@ public class RuleEngine {
             expMap.put(PREFIX + rule.getRuleId(), ruleResult);
         });
         LoggerUtils.info(LOGGER, "expMap is {0}", JSON.toJSON(expMap));
-
+        System.out.println(JSON.toJSON(expMap));
         String boolExp = StringUtils.addPrefixBeforeNumber(strategy.getExecuteMethod(), PREFIX);
         Boolean executeResult = GroovyShellManage.executeExp(boolExp, expMap, Boolean.class);
         long end = System.currentTimeMillis();
         LoggerUtils.info(LOGGER, "total consume: {0}ms", end - beg);
+        System.out.println(end - beg);
         return executeResult;
     }
 

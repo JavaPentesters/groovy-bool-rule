@@ -4,8 +4,10 @@ import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.groovy.control.ErrorCollector;
 import org.codehaus.groovy.control.MultipleCompilationErrorsException;
 import org.junit.Test;
-import org.kohsuke.groovy.sandbox.GroovyInterceptor;
 import org.kohsuke.groovy.sandbox.SandboxTransformer;
+
+import com.geekmake.groovy.rules.core.sandbox.NoRunTimeSandbox;
+import com.geekmake.groovy.rules.core.sandbox.NoSystemExitSandbox;
 
 import groovy.lang.GroovyShell;
 
@@ -43,23 +45,4 @@ public class TestGroovyGrammar {
         sh.evaluate("System.exit(0)");
     }
 
-    class NoSystemExitSandbox extends GroovyInterceptor {
-        @Override
-        public Object onStaticCall(GroovyInterceptor.Invoker invoker, Class receiver, String method,
-                                   Object... args) throws Throwable {
-            if (receiver == System.class && method == "exit")
-                throw new SecurityException("No call on System.exit() please");
-            return super.onStaticCall(invoker, receiver, method, args);
-        }
-    }
-
-    class NoRunTimeSandbox extends GroovyInterceptor {
-        @Override
-        public Object onStaticCall(GroovyInterceptor.Invoker invoker, Class receiver, String method,
-                                   Object... args) throws Throwable {
-            if (receiver == Runtime.class)
-                throw new SecurityException("No call on RunTime please");
-            return super.onStaticCall(invoker, receiver, method, args);
-        }
-    }
 }
